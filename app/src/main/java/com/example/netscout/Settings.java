@@ -17,16 +17,16 @@ SharedPreferences sharedPref;
         
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
-        editText = (EditText) findViewById(R.id.editTextLink);
+        editText = findViewById(R.id.editTextLink);
     }
     public void safeLink(View view){
-        //SharedPreferences sharedPref = getPreferences(this.MODE_PRIVATE);
+
         sharedPref =getSharedPreferences("A", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        //String newLink = getText(findViewById(R.id.editTextLink)).toString();
+
         String newLink = editText.getText().toString();
         editor.putString("userland", newLink);
-        editor.commit();
+        editor.apply();
 
 
     }
