@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         sharedPref =getSharedPreferences("A", Context.MODE_PRIVATE);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        WebView webView = (WebView) findViewById(R.id.webwindow);
+        WebView webView = findViewById(R.id.webwindow);
 
         sharedPref =getSharedPreferences("A", Context.MODE_PRIVATE);
         String userLink= sharedPref.getString("userland", "default");
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
                 uploadMessage = filePathCallback;
 
-                Intent intent = null;
+                Intent intent;
 
                 intent = fileChooserParams.createIntent();
                 try
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         }
         webView.loadUrl(userLink);
 
-        b3=(Button) findViewById(R.id.button3);
+        b3= findViewById(R.id.button3);
         b3.setOnClickListener(new View.OnClickListener() {
 
 
@@ -114,7 +114,19 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
+
     }
+
+    @Override
+    public void onBackPressed() {
+        WebView webView = findViewById(R.id.webwindow);
+        if(webView.canGoBack()) {
+            webView.goBack();
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
@@ -144,6 +156,8 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
     }
+
+
 
 
 }
