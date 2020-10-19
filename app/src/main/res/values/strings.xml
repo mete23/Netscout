@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Netscout</string>
+    <string name="data">https://www.google.com</string>
+</resources>
